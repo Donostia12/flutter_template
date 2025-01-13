@@ -13,7 +13,7 @@ Future<List<NewsModel>> fetchNews() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.5:3000/api');
+    final response = await dio.get('http://192.168.1.5:3000/news/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;

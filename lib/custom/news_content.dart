@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/screen/blog_news.dart';
-import 'package:template_scaffold/screen/detail_news.dart';
+import 'package:template_scaffold/screen/blog/blog_news.dart';
+import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class NewsContent extends StatelessWidget {
   final String title;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/color/steamcolor.dart';
 import 'package:template_scaffold/main.dart';
-import 'package:template_scaffold/screen/blog_news.dart';
+import 'package:template_scaffold/screen/blog/blog_news.dart';
+import 'package:template_scaffold/screen/portopolio.dart';
 import 'package:template_scaffold/screen/product.dart';
 import 'package:template_scaffold/screen/service_view.dart';
 
@@ -95,7 +96,7 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyApp()),
+                MaterialPageRoute(builder: (context) => const Portopolio()),
               );
             },
             title: const Text('Portopolio'),
