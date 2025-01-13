@@ -59,4 +59,4 @@ class NewsModel {
       Desc: json['desc'] ?? 'No Description',
     );
   }
-}d q
+}
