@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:template_scaffold/color/steamcolor.dart';
 import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/blog_news.dart';
+import 'package:template_scaffold/screen/product.dart';
 import 'package:template_scaffold/screen/service_view.dart';
 
 class SideNavbar extends StatelessWidget {
@@ -65,8 +66,14 @@ class SideNavbar extends StatelessWidget {
                   );
                 },
               ),
-              const ListTile(
-                  leading: Icon(Icons.adb_outlined), title: Text('product')),
+              ListTile(
+                leading: Icon(Icons.adb_outlined),
+                title: Text('product'),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Product()));
+                },
+              ),
             ],
           ),
           ListTile(
@@ -80,6 +87,18 @@ class SideNavbar extends StatelessWidget {
               );
             },
             title: const Text('Blog'),
+          ),
+          ListTile(
+            iconColor: SteamColors.bottomBarBackground,
+            leading: const Icon(Icons.contact_page),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyApp()),
+              );
+            },
+            title: const Text('Portopolio'),
           ),
         ],
       ),

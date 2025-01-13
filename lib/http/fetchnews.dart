@@ -54,7 +54,8 @@ class NewsModel {
     return NewsModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.5:3000/storage/' + (json['image'] ?? ''),
+      imageUrl:
+          'http://192.168.1.5:3000/storage/images/' + (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
       Desc: json['desc'] ?? 'No Description',
     );
