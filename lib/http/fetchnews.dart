@@ -13,7 +13,7 @@ Future<List<NewsModel>> fetchNews() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.5:91/news-all');
+    final response = await dio.get('http://192.168.1.5:3000/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -54,9 +54,9 @@ class NewsModel {
     return NewsModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.5:91/' + (json['image'] ?? ''),
+      imageUrl: 'http://192.168.1.5:3000/storage/' + (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
       Desc: json['desc'] ?? 'No Description',
     );
   }
-}
+}d q
