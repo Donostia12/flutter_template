@@ -13,7 +13,7 @@ class BlogNews extends StatelessWidget {
       appBar: CustomAppBar(title: 'Blog & News'),
       drawer: SideNavbar(),
       body: FutureBuilder<List<NewsModel>>(
-        future: fetchNews(), // Fungsi untuk mengambil data dari API
+        future: fetchNews(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

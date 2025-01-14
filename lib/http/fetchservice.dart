@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart'; // Import Dio
 
-Future<List<ServicesModel>> fetchNews() async {
+Future<List<ServicesModel>> fetchService() async {
   try {
     Dio dio = Dio();
 

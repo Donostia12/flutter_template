@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/header_content.dart';
 import 'package:template_scaffold/custom/news_content.dart';
+import 'package:template_scaffold/custom/service_content.dart';
+import 'package:template_scaffold/http/fetchservice.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
 class ServiceView extends StatelessWidget {
@@ -10,7 +12,7 @@ class ServiceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: CustomAppBar(
         title: 'Service',
       ),
@@ -22,15 +24,37 @@ class ServiceView extends StatelessWidget {
             shortDesc:
                 "Our services include developing web applications, internet promotion SEO, integration of computer network equipment, IT Security, IoT and Artificial Intelligence Implementors.",
           ),
-          NewsContent(
-              date: "Senin, 9 Januari 2025",
-              title:
-                  "Website Creation Services in Bali Digital Solutions for Your Business",
-              imageUrl:
-                  "http://192.168.1.5:91/images/openart-image_6f494exJ_1725241969371_raw.jpg",
-              shortContent:
-                  "The primary purpose of the web application is to facilitate the performance of certain tasks by the user.",
-              desc: "empty"),
+          Expanded(
+            // Tambahkan Expanded di sini
+            child: FutureBuilder<List<ServicesModel>>(
+              future: fetchService(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  final newsList = snapshot.data!;
+
+                  return ListView.builder(
+                    itemCount: newsList.length,
+                    itemBuilder: (context, index) {
+                      final news = newsList[index];
+                      return ServiceContent(
+                        date: news.createdAt,
+                        title: news.title,
+                        imageUrl: '${news.imageUrl}',
+                        shortContent: news.shortDesc,
+                        desc: news.Desc,
+                      );
+                    },
+                  );
+                } else {
+                  return const Center(child: Text('No data available'));
+                }
+              },
+            ),
+          ),
         ],
       ),
     );
