@@ -4,8 +4,8 @@ Future<List<ServicesModel>> fetchService() async {
   try {
     Dio dio = Dio();
 
-    dio.options.connectTimeout = Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = Duration(milliseconds: 60000);
+    dio.options.connectTimeout = const Duration(milliseconds: 60000);
+    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
 
     // Menambahkan header Connection: keep-alive
     dio.options.headers = {
@@ -41,13 +41,13 @@ class ServicesModel {
   final String shortDesc;
   final String imageUrl;
   final String createdAt;
-  final String Desc;
+  final String desc;
   ServicesModel({
     required this.title,
     required this.shortDesc,
     required this.imageUrl,
     required this.createdAt,
-    required this.Desc,
+    required this.desc,
   });
 
   factory ServicesModel.fromJson(Map<String, dynamic> json) {
@@ -57,7 +57,7 @@ class ServicesModel {
       imageUrl:
           'http://192.168.1.5:3000/storage/images/' + (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
-      Desc: json['desc'] ?? 'No Description',
+      desc: json['desc'] ?? 'No Description',
     );
   }
 }

@@ -68,11 +68,11 @@ class SideNavbar extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.adb_outlined),
-                title: Text('product'),
+                leading: const Icon(Icons.adb_outlined),
+                title: const Text('product'),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Product()));
+                      MaterialPageRoute(builder: (context) => const Product()));
                 },
               ),
             ],
@@ -84,7 +84,7 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => BlogNews()),
+                MaterialPageRoute(builder: (context) => const BlogNews()),
               );
             },
             title: const Text('Blog'),

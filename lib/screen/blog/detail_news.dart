@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
-import 'package:template_scaffold/custom/header_content.dart';
+
 import 'package:template_scaffold/screen/side_navbar.dart';
 
 class DetailNews extends StatelessWidget {
-  final String title_news;
-  final String shortDesc_news;
-  final String imageUrl_news;
-  final String createdAt_news;
-  final String content_news;
+  final String titlenews;
+  final String shortDescNews;
+  final String imageUrlNews;
+  final String createdAtNews;
+  final String contentNews;
 
-  DetailNews({
-    required this.title_news,
-    required this.shortDesc_news,
-    required this.imageUrl_news,
-    required this.createdAt_news,
-    required this.content_news,
+  const DetailNews({
+    required this.titlenews,
+    required this.shortDescNews,
+    required this.imageUrlNews,
+    required this.createdAtNews,
+    required this.contentNews,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Detail News'),
-      drawer: SideNavbar(),
+      appBar: const CustomAppBar(title: 'Detail News'),
+      drawer: const SideNavbar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -33,7 +33,7 @@ class DetailNews extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(imageUrl_news),
+                  image: NetworkImage(imageUrlNews),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -45,21 +45,22 @@ class DetailNews extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title_news,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    titlenews,
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    'Published on: $createdAt_news',
-                    style: TextStyle(color: Colors.grey),
+                    'Published on: $createdAtNews',
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              content_news,
-              style: TextStyle(fontSize: 16),
+              contentNews,
+              style: const TextStyle(fontSize: 16),
               textAlign: TextAlign.justify,
             ),
           ],

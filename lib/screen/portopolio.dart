@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
-import 'package:template_scaffold/custom/header_content.dart';
-import 'package:template_scaffold/custom/image_gallery.dart';
+
 import 'package:template_scaffold/http/fetchportfolio.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
@@ -11,8 +10,8 @@ class Portfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Portopolio'),
-      drawer: SideNavbar(),
+      appBar: const CustomAppBar(title: 'Portopolio'),
+      drawer: const SideNavbar(),
       body: FutureBuilder<List<PortfolioModel>>(
           future: fetchPortfolio(),
           builder: (context, snapshot) {

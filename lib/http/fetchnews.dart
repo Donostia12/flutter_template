@@ -4,8 +4,8 @@ Future<List<NewsModel>> fetchNews() async {
   try {
     Dio dio = Dio();
 
-    dio.options.connectTimeout = Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = Duration(milliseconds: 60000);
+    dio.options.connectTimeout = const Duration(milliseconds: 60000);
+    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
 
     // Menambahkan header Connection: keep-alive
     dio.options.headers = {
@@ -42,23 +42,24 @@ class NewsModel {
   final String shortDesc;
   final String imageUrl;
   final String createdAt;
-  final String Desc;
+  final String desc;
   NewsModel({
     required this.title,
     required this.shortDesc,
     required this.imageUrl,
     required this.createdAt,
-    required this.Desc,
+    required this.desc,
   });
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
+      // ignore: prefer_interpolation_to_compose_strings
       imageUrl: 'https://baligatraapi.devdonos.pro/storage/images/' +
           (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
-      Desc: json['desc'] ?? 'No Description',
+      desc: json['desc'] ?? 'No Description',
     );
   }
 }

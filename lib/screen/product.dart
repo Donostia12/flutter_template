@@ -7,7 +7,7 @@ class Product extends StatelessWidget {
   const Product({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(title: 'Product'),
       drawer: SideNavbar(),
       body: HeaderContent(title: "Product", shortDesc: "empty"),

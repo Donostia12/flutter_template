@@ -4,8 +4,8 @@ Future<List<PortfolioModel>> fetchPortfolio() async {
   try {
     Dio dio = Dio();
 
-    dio.options.connectTimeout = Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = Duration(milliseconds: 60000);
+    dio.options.connectTimeout = const Duration(milliseconds: 60000);
+    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
 
     dio.options.headers = {
       'Connection': 'keep-alive',

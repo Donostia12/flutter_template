@@ -67,11 +67,11 @@ class ServiceContent extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => DetailNews(
-                                title_news: title,
-                                createdAt_news: date,
-                                shortDesc_news: shortContent,
-                                imageUrl_news: imageUrl,
-                                content_news: desc,
+                                titlenews: title,
+                                createdAtNews: date,
+                                shortDescNews: shortContent,
+                                imageUrlNews: imageUrl,
+                                contentNews: desc,
                               )),
                     );
                   },

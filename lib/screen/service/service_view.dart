@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/header_content.dart';
-import 'package:template_scaffold/custom/news_content.dart';
+
 import 'package:template_scaffold/custom/service_content.dart';
 import 'package:template_scaffold/http/fetchservice.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
@@ -13,13 +13,13 @@ class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: 'Service',
       ),
-      drawer: SideNavbar(),
+      drawer: const SideNavbar(),
       body: Column(
         children: [
-          HeaderContent(
+          const HeaderContent(
             title: "Services",
             shortDesc:
                 "Our services include developing web applications, internet promotion SEO, integration of computer network equipment, IT Security, IoT and Artificial Intelligence Implementors.",
@@ -43,9 +43,9 @@ class ServiceView extends StatelessWidget {
                       return ServiceContent(
                         date: news.createdAt,
                         title: news.title,
-                        imageUrl: '${news.imageUrl}',
+                        imageUrl: news.imageUrl,
                         shortContent: news.shortDesc,
-                        desc: news.Desc,
+                        desc: news.desc,
                       );
                     },
                   );

@@ -5,13 +5,13 @@ import 'package:template_scaffold/http/fetchnews.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
 class BlogNews extends StatelessWidget {
-  BlogNews({super.key});
+  const BlogNews({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Blog & News'),
-      drawer: SideNavbar(),
+      appBar: const CustomAppBar(title: 'Blog & News'),
+      drawer: const SideNavbar(),
       body: FutureBuilder<List<NewsModel>>(
         future: fetchNews(),
         builder: (context, snapshot) {
@@ -30,9 +30,9 @@ class BlogNews extends StatelessWidget {
                 return NewsContent(
                   date: news.createdAt,
                   title: news.title,
-                  imageUrl: '${news.imageUrl}',
+                  imageUrl: news.imageUrl,
                   shortContent: news.shortDesc,
-                  desc: news.Desc,
+                  desc: news.desc,
                 );
               },
             );

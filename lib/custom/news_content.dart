@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/screen/blog/blog_news.dart';
+
 import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class NewsContent extends StatelessWidget {
@@ -28,17 +28,24 @@ class NewsContent extends StatelessWidget {
           children: [
             // Gambar Berita
             Container(
+              height: 200,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => DetailNews(
-                              title_news: title,
-                              createdAt_news: date,
-                              shortDesc_news: shortContent,
-                              imageUrl_news: imageUrl,
-                              content_news: desc,
+                              titlenews: title,
+                              createdAtNews: date,
+                              shortDescNews: shortContent,
+                              imageUrlNews: imageUrl,
+                              contentNews: desc,
                             )),
                   );
                 },
@@ -50,13 +57,6 @@ class NewsContent extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ),
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
                 ),
               ),
             ),
