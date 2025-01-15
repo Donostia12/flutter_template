@@ -13,7 +13,8 @@ Future<List<NewsModel>> fetchNews() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.6:3000/news/api');
+    final response =
+        await dio.get('https://baligatraapi.devdonos.pro/news/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -54,8 +55,8 @@ class NewsModel {
     return NewsModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl:
-          'http://192.168.1.6:3000/storage/images/' + (json['image'] ?? ''),
+      imageUrl: 'https://baligatraapi.devdonos.pro/storage/images/' +
+          (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
       Desc: json['desc'] ?? 'No Description',
     );

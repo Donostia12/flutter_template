@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class ServiceContent extends StatelessWidget {
   final String title;
@@ -23,26 +24,22 @@ class ServiceContent extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Gambar di sebelah kiri
           Expanded(
-            flex: 1, // Lebar relatif untuk gambar
+            flex: 1,
             child: Container(
-              height: 150, // Tinggi gambar
+              height: 150,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(imageUrl),
                   fit: BoxFit.cover,
                 ),
-                borderRadius:
-                    BorderRadius.circular(8), // Border radius untuk gambar
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
           ),
-          const SizedBox(width: 16), // Spasi antara gambar dan deskripsi
-
-          // Kolom untuk teks (deskripsi)
+          const SizedBox(width: 16),
           Expanded(
-            flex: 2, // Lebar relatif untuk teks
+            flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,7 +63,17 @@ class ServiceContent extends StatelessWidget {
                 const SizedBox(height: 7),
                 ElevatedButton(
                   onPressed: () {
-                    // Tambahkan logika untuk navigasi ke detail berita
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailNews(
+                                title_news: title,
+                                createdAt_news: date,
+                                shortDesc_news: shortContent,
+                                imageUrl_news: imageUrl,
+                                content_news: desc,
+                              )),
+                    );
                   },
                   child: const Text("Read More"),
                 ),
