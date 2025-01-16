@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
-
 import 'package:template_scaffold/screen/side_navbar.dart';
 
 class DetailNews extends StatelessWidget {
@@ -28,7 +27,6 @@ class DetailNews extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar Header
             Container(
               height: 200,
               decoration: BoxDecoration(

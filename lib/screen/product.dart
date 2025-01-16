@@ -28,9 +28,7 @@ class Product extends StatelessWidget {
                   return ProductContent(
                     title: news.title,
                     shortContent: news.shortDesc,
-                    desc: news.desc,
-                    date: news.createdAt,
-                    imageUrl: news.imageUrl,
+                    img_url: news.imageUrl,
                   );
                 },
               );
