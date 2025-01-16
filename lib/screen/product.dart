@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
+import 'package:template_scaffold/custom/product_content.dart';
 import 'package:template_scaffold/http/fetchproduct.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
@@ -24,7 +25,13 @@ class Product extends StatelessWidget {
                 itemCount: newsList.length,
                 itemBuilder: (context, index) {
                   final news = newsList[index];
-                  return Text(news.title);
+                  return ProductContent(
+                    title: news.title,
+                    shortContent: news.shortDesc,
+                    desc: news.desc,
+                    date: news.createdAt,
+                    imageUrl: news.imageUrl,
+                  );
                 },
               );
             } else {
