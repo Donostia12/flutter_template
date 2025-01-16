@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart'; // Import Dio
 
-Future<List<ServicesModel>> fetchService() async {
+Future<List<ProductModel>> fetchProduct() async {
   try {
     Dio dio = Dio();
 
@@ -14,15 +14,15 @@ Future<List<ServicesModel>> fetchService() async {
 
     // Melakukan GET request dengan Dio
     final response =
-        await dio.get('https://baligatraapi.devdonos.pro/service/api');
+        await dio.get('https://baligatraapi.devdonos.pro/product/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
 
       if (jsonData['success'] == true && jsonData['data'] != null) {
-        List<ServicesModel> newsList = [];
+        List<ProductModel> newsList = [];
         for (var item in jsonData['data']) {
-          newsList.add(ServicesModel.fromJson(item));
+          newsList.add(ProductModel.fromJson(item));
         }
         return newsList;
       } else {
@@ -37,13 +37,13 @@ Future<List<ServicesModel>> fetchService() async {
   }
 }
 
-class ServicesModel {
+class ProductModel {
   final String title;
   final String shortDesc;
   final String imageUrl;
   final String createdAt;
   final String desc;
-  ServicesModel({
+  ProductModel({
     required this.title,
     required this.shortDesc,
     required this.imageUrl,
@@ -51,8 +51,8 @@ class ServicesModel {
     required this.desc,
   });
 
-  factory ServicesModel.fromJson(Map<String, dynamic> json) {
-    return ServicesModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
       imageUrl: 'https://baligatraapi.devdonos.pro/storage/images/' +
