@@ -53,9 +53,13 @@ class SideNavbar extends StatelessWidget {
             title: const Text('Home'),
           ),
           ExpansionTile(
-            title: const Text('About Us'),
-            leading: const Icon(Icons.person),
+            title: const Text('Our Profile'),
+            leading: const Icon(Icons.work_outline_rounded),
             children: [
+              ListTile(
+                leading: const Icon(Icons.person_3),
+                title: const Text('About Us'),
+              ),
               ListTile(
                 leading: const Icon(Icons.web),
                 title: const Text('Services'),
