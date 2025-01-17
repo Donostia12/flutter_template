@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/custom/custom_appbar.dart';
-import 'package:template_scaffold/screen/side_navbar.dart';
 
 class AboutContent extends StatelessWidget {
   final String titleAbout;
@@ -17,46 +15,43 @@ class AboutContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'About Us'),
-      drawer: const SideNavbar(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageUrlAbout),
-                  fit: BoxFit.cover,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Gambar di atas
+          Container(
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(imageUrlAbout),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // Konten Judul dan Deskripsi Pendek
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "About Us",
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-              ),
+                const SizedBox(height: 8),
+                Text(
+                  contentAbout,
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(height: 16),
+              ],
             ),
-            // Konten Berita
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    titleAbout,
-                    style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              contentAbout,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.justify,
-            ),
-          ],
-        ),
+          ),
+          // Konten Berita Utama
+        ],
       ),
     );
   }
