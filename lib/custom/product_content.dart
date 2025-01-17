@@ -27,9 +27,9 @@ class ProductContent extends StatelessWidget {
           children: <Widget>[
             Image.network(
               img_url,
-              width: 150, // Tambahkan lebar agar gambar tidak terlalu besar
-              height: 150, // Tambahkan tinggi agar gambar tetap proporsional
-              fit: BoxFit.cover, // Pastikan gambar tidak pecah
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
             ),
             Expanded(
               child: Container(
@@ -49,7 +49,7 @@ class ProductContent extends StatelessWidget {
                     SizedBox(height: 5), // Jarak antara title dan shortContent
                     Text(
                       shortContent.length > 50
-                          ? "${shortContent.substring(0, 170)}..."
+                          ? "${shortContent.substring(0, 150)}..."
                           : shortContent,
                       style: TextStyle(fontSize: 14), // Ukuran font lebih kecil
                     ),

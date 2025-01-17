@@ -21,66 +21,89 @@ class ServiceContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
-                ),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment:
+              CrossAxisAlignment.stretch, // Pastikan tinggi sejajar
+          children: [
+            Expanded(
+              flex: 1,
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
+                child: AspectRatio(
+                  aspectRatio: 1, // Menjaga proporsi gambar
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            flex: 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+            const SizedBox(width: 10),
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceBetween, // Distribusi elemen agar rapi
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  shortContent,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.black87,
+                  const SizedBox(height: 5),
+                  Expanded(
+                    child: Text(
+                      shortContent.length > 50
+                          ? "${shortContent.substring(0, 150)}..."
+                          : shortContent,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.black87,
+                      ),
+                      maxLines: 3,
+                      overflow:
+                          TextOverflow.ellipsis, // Mencegah teks melebihi batas
+                    ),
                   ),
-                ),
-                const SizedBox(height: 7),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailNews(
-                                titlenews: title,
-                                createdAtNews: date,
-                                shortDescNews: shortContent,
-                                imageUrlNews: imageUrl,
-                                contentNews: desc,
-                              )),
-                    );
-                  },
-                  child: const Text("Read More"),
-                ),
-              ],
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailNews(
+                              titlenews: title,
+                              createdAtNews: date,
+                              shortDescNews: shortContent,
+                              imageUrlNews: imageUrl,
+                              contentNews: desc,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
+                          textStyle: const TextStyle(fontSize: 14),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                          ),
+                          side: const BorderSide(
+                              color: const Color.fromARGB(157, 4, 41, 84))),
+                      child: Text('Read More'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
