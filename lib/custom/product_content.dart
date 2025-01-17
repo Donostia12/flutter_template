@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class ProductContent extends StatelessWidget {
   ProductContent(
       {super.key,
       required this.title,
+      required this.content,
       required this.shortContent,
       required this.img_url});
 
   final String title;
+  final String content;
   final String shortContent;
   final String img_url;
 
@@ -54,7 +57,14 @@ class ProductContent extends StatelessWidget {
                       alignment: Alignment.centerRight, // Tombol rata kanan
                       child: ElevatedButton(
                         onPressed: () {
-                          print("test");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DetailNews(
+                                      titlenews: title,
+                                      shortDescNews: shortContent,
+                                      imageUrlNews: img_url,
+                                      contentNews: content)));
                         },
                         style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(

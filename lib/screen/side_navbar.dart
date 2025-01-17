@@ -3,7 +3,7 @@ import 'package:template_scaffold/color/steamcolor.dart';
 import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/blog/blog_news.dart';
 import 'package:template_scaffold/screen/portopolio.dart';
-import 'package:template_scaffold/screen/product.dart';
+import 'package:template_scaffold/screen/product/product.dart';
 import 'package:template_scaffold/screen/service/service_view.dart';
 
 class SideNavbar extends StatelessWidget {

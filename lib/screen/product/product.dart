@@ -26,10 +26,10 @@ class Product extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final news = newsList[index];
                   return ProductContent(
-                    title: news.title,
-                    shortContent: news.shortDesc,
-                    img_url: news.imageUrl,
-                  );
+                      title: news.title,
+                      shortContent: news.shortDesc,
+                      img_url: news.imageUrl,
+                      content: news.desc);
                 },
               );
             } else {
