@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/screen/blog/detail_news.dart';
+import 'package:template_scaffold/screen/product/detail_product.dart';
 
 class ProductContent extends StatelessWidget {
   ProductContent(
@@ -60,20 +61,20 @@ class ProductContent extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => DetailNews(
-                                      titlenews: title,
-                                      shortDescNews: shortContent,
-                                      imageUrlNews: img_url,
-                                      contentNews: content)));
+                                  builder: (context) => DetailProduct(
+                                      titleproduct: title,
+                                      shortDescproduct: shortContent,
+                                      imageUrlproduct: img_url,
+                                      contentproduct: content)));
                         },
                         style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 5, vertical: 5),
                             textStyle: const TextStyle(fontSize: 14),
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero,
                             ),
-                            side: BorderSide(
+                            side: const BorderSide(
                                 color: const Color.fromARGB(157, 4, 41, 84))),
                         child: Text('Read More'),
                       ),
