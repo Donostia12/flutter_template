@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/screen/blog/detail_news.dart';
+
 import 'package:template_scaffold/screen/product/detail_product.dart';
 
 class ProductContent extends StatelessWidget {

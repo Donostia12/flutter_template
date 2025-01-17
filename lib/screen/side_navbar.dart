@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/color/steamcolor.dart';
 import 'package:template_scaffold/main.dart';
+import 'package:template_scaffold/screen/about/about_us.dart';
 import 'package:template_scaffold/screen/blog/blog_news.dart';
 import 'package:template_scaffold/screen/portopolio.dart';
 import 'package:template_scaffold/screen/product/product.dart';
@@ -59,6 +60,10 @@ class SideNavbar extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.person_3),
                 title: const Text('About Us'),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const AboutUs()));
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.web),
