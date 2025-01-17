@@ -23,16 +23,16 @@ class Portfolio extends StatelessWidget {
               final newsList = snapshot.data!;
 
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 1), // Padding tipis di kiri dan kanan
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     // Menghitung lebar gambar berdasarkan lebar layar
                     final double itemWidth = constraints.maxWidth / 3 -
-                        16; // 16 untuk padding antara gambar
+                        4; // Mengurangi 8 untuk padding kiri dan kanan
 
                     return ListView.builder(
-                      itemCount:
-                          (newsList.length / 3).ceil(), // Menghitung jumlah row
+                      itemCount: (newsList.length / 3).ceil(),
                       itemBuilder: (context, rowIndex) {
                         // Mengambil sublist untuk row
                         int startIndex = rowIndex * 3;
@@ -47,16 +47,19 @@ class Portfolio extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: rowImages.map((portfolio) {
                             return Padding(
-                              padding: const EdgeInsets.all(4.0),
+                              padding: const EdgeInsets.all(
+                                  2), // Padding kecil antar gambar
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
+                                borderRadius: BorderRadius.circular(
+                                    0), // Sedikit radius untuk sudut gambar
                                 child: Image.network(
-                                  portfolio
-                                      .imageUrl, // Asumsi portfolio memiliki imageUrl
-                                  width: itemWidth,
+                                  portfolio.imageUrl,
+                                  width:
+                                      itemWidth, // Lebar gambar yang dihitung
                                   height:
-                                      itemWidth, // Sesuaikan dengan lebar agar persegi
-                                  fit: BoxFit.cover,
+                                      itemWidth, // Tinggi gambar yang dihitung
+                                  fit: BoxFit
+                                      .cover, // Menyesuaikan ukuran gambar agar tetap proporsional
                                 ),
                               ),
                             );
