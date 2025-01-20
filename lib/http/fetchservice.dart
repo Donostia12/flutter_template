@@ -13,8 +13,7 @@ Future<List<ServicesModel>> fetchService() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response =
-        await dio.get('https://baligatraapi.devdonos.pro/service/api');
+    final response = await dio.get('http://192.168.1.6:8000/service/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
