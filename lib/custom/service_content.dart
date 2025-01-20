@@ -51,6 +51,7 @@ class ServiceContent extends StatelessWidget {
                       }
                     },
                     errorBuilder: (context, error, stackTrace) {
+                      print('Error loading image: $error');
                       return Icon(Icons
                           .error); // Menampilkan ikon error jika gambar gagal
                     },
