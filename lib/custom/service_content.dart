@@ -32,7 +32,7 @@ class ServiceContent extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: AspectRatio(
-                  aspectRatio: 1, // Menjaga proporsi gambar
+                  aspectRatio: 1,
                   child: Image.network(
                     imageUrl,
                     fit: BoxFit.cover,

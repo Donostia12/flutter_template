@@ -27,9 +27,30 @@ class ProductContent extends StatelessWidget {
           children: <Widget>[
             Image.network(
               img_url,
+              fit: BoxFit.cover,
               width: 150,
               height: 150,
-              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              (loadingProgress.expectedTotalBytes ?? 1)
+                          : null,
+                    ),
+                  );
+                }
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(
+                  Icons.error,
+                  size: 150,
+                  color: Colors.yellow,
+                ); // Menampilkan ikon error jika gambar gagal
+              },
             ),
             Expanded(
               child: Container(
@@ -48,8 +69,8 @@ class ProductContent extends StatelessWidget {
                     ),
                     SizedBox(height: 5), // Jarak antara title dan shortContent
                     Text(
-                      shortContent.length > 50
-                          ? "${shortContent.substring(0, 150)}..."
+                      shortContent.length > 80
+                          ? "${shortContent.substring(0, 80)}..."
                           : shortContent,
                       style: TextStyle(fontSize: 14), // Ukuran font lebih kecil
                     ),
