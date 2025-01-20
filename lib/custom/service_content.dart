@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:template_scaffold/custom/Detail_content.dart';
 import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class ServiceContent extends StatelessWidget {
@@ -35,6 +36,24 @@ class ServiceContent extends StatelessWidget {
                   child: Image.network(
                     imageUrl,
                     fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    (loadingProgress.expectedTotalBytes ?? 1)
+                                : null,
+                          ),
+                        );
+                      }
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons
+                          .error); // Menampilkan ikon error jika gambar gagal
+                    },
                   ),
                 ),
               ),
@@ -58,7 +77,7 @@ class ServiceContent extends StatelessWidget {
                   const SizedBox(height: 5),
                   Expanded(
                     child: Text(
-                      shortContent.length > 50
+                      shortContent.length > 150
                           ? "${shortContent.substring(0, 150)}..."
                           : shortContent,
                       style: const TextStyle(
@@ -77,7 +96,7 @@ class ServiceContent extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetailNews(
+                            builder: (context) => DetailContent(
                               titlenews: title,
                               createdAtNews: date,
                               shortDescNews: shortContent,
