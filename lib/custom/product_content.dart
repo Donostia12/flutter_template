@@ -33,7 +33,6 @@ class ProductContent extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Text(img_url),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(5),
