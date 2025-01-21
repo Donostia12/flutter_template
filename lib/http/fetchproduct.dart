@@ -11,7 +11,7 @@ Future<List<ProductModel>> fetchProduct() async {
     dio.options.headers = {
       'Connection': 'keep-alive',
     };
-
+    await Future.delayed(const Duration(seconds: 1));
     // Melakukan GET request dengan Dio
     final response = await dio.get('http://192.168.1.5:8000/products/api');
 
