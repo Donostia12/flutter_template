@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/http/retry_image.dart';
+
 import 'package:template_scaffold/screen/product/detail_product.dart';
 
 class ProductContent extends StatelessWidget {
@@ -26,9 +26,12 @@ class ProductContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 50,
-              width: 50,
-              child: RetryImageLoader(imgUrl: img_url),
+              height: 150,
+              width: 150,
+              child: Image.network(
+                img_url,
+                fit: BoxFit.cover,
+              ),
             ),
             Text(img_url),
             Expanded(
