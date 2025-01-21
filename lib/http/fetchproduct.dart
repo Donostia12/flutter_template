@@ -2,18 +2,8 @@ import 'package:dio/dio.dart'; // Import Dio
 
 Future<List<ProductModel>> fetchProduct() async {
   try {
-    Dio dio = Dio();
-
-    dio.options.connectTimeout = const Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
-
-    // Menambahkan header Connection: keep-alive
-    dio.options.headers = {
-      'Connection': 'keep-alive',
-    };
-    await Future.delayed(const Duration(seconds: 1));
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.5:8000/products/api');
+    final response = await Dio().get('http://192.168.1.5:8000/products/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;

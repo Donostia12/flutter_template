@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/about_content.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
-import 'package:template_scaffold/custom/news_content.dart';
-import 'package:template_scaffold/custom/product_content.dart';
+
 import 'package:template_scaffold/http/fetchabout.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
