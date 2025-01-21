@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/Detail_content.dart';
-import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class ServiceContent extends StatelessWidget {
   final String title;
