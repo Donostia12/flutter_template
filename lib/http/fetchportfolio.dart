@@ -4,14 +4,11 @@ Future<List<PortfolioModel>> fetchPortfolio() async {
   try {
     Dio dio = Dio();
 
-    dio.options.connectTimeout = const Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
-
     dio.options.headers = {
       'Connection': 'keep-alive',
     };
 
-    final response = await dio.get('http://192.168.1.5:8000/blogs/api');
+    final response = await dio.get('http://192.168.1.7:8000/blogs/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;

@@ -4,9 +4,6 @@ Future<List<NewsModel>> fetchNews() async {
   try {
     Dio dio = Dio();
 
-    dio.options.connectTimeout = const Duration(milliseconds: 60000);
-    dio.options.receiveTimeout = const Duration(milliseconds: 60000);
-
     // Menambahkan header Connection: keep-alive
     dio.options.headers = {
       'Connection': 'keep-alive',
