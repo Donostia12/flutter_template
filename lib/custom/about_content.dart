@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AboutContent extends StatefulWidget {
@@ -77,9 +78,8 @@ class _AboutContentState extends State<AboutContent> {
                       fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  widget.contentAbout,
-                  textAlign: TextAlign.justify,
+                Html(
+                  data: widget.contentAbout,
                 ),
                 const SizedBox(height: 16),
               ],
