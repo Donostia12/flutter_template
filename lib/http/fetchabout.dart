@@ -50,8 +50,7 @@ class AboutModel {
     return AboutModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl:
-          'http://192.168.1.7:8000/storage/images/' + (json['image'] ?? ''),
+      imageUrl: 'http://192.168.1.7:8000/' + (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['content_desc'] ?? 'No Description',
     );
