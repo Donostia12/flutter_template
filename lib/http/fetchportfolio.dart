@@ -40,7 +40,7 @@ class PortfolioModel {
 
   factory PortfolioModel.fromJson(Map<String, dynamic> json) {
     return PortfolioModel(
-      imageUrl: 'http://192.168.1.2:8000/' + (json['image'] ?? ''),
+      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
     );
   }
 }
