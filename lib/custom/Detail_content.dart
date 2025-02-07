@@ -11,6 +11,7 @@ class DetailContent extends StatelessWidget {
   final String contentNews;
 
   const DetailContent({
+    super.key,
     required this.titlenews,
     required this.shortDescNews,
     required this.imageUrlNews,

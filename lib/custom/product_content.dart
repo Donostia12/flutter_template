@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/custom/Detail_content.dart';
+import 'package:template_scaffold/custom/detail_content.dart';
 
 class ProductContent extends StatelessWidget {
   ProductContent({
