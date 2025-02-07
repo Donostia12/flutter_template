@@ -114,8 +114,8 @@ class ServiceContent extends StatelessWidget {
                             borderRadius: BorderRadius.zero,
                           ),
                           side: const BorderSide(
-                              color: const Color.fromARGB(157, 4, 41, 84))),
-                      child: Text('Read More'),
+                              color: Color.fromARGB(157, 4, 41, 84))),
+                      child: const Text('Read More'),
                     ),
                   ),
                 ],

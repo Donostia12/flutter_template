@@ -52,8 +52,7 @@ class NewsModel {
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
       // ignore: prefer_interpolation_to_compose_strings
-      imageUrl:
-          'http://192.168.1.2:8000/storage/images/' + (json['image'] ?? ''),
+      imageUrl: 'http://192.168.1.2:8000/storage/images/${json['image'] ?? ''}',
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['desc'] ?? 'No Description',
     );
