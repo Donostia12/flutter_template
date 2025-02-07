@@ -96,7 +96,7 @@ class SideNavbar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const BlogNews()),
               );
             },
-            title: const Text('Blog'),
+            title: const Text('Blogs'),
           ),
           ListTile(
             iconColor: SteamColors.bottomBarBackground,
@@ -108,7 +108,7 @@ class SideNavbar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Portfolio()),
               );
             },
-            title: const Text('Portopolio'),
+            title: const Text('Portfolio'),
           ),
         ],
       ),
