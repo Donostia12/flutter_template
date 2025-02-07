@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:template_scaffold/custom/custom_appbar.dart';
+import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/custom/header_content.dart';
 
 import 'package:template_scaffold/custom/service_content.dart';
@@ -13,6 +14,7 @@ class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const FloatingWhatsApp(),
       appBar: const CustomAppBar(
         title: 'Service',
       ),

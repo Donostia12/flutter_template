@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/about_content.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
+import 'package:template_scaffold/custom/floating_whatsapp.dart';
 
 import 'package:template_scaffold/http/fetchabout.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
@@ -11,13 +12,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Define the action for the button here
-        },
-        child: Image.asset(
-            'assets/images/whatsapp.jpg'), // Ensure you have the image in your assets folder
-      ),
+      floatingActionButton: const FloatingWhatsApp(),
       appBar: const CustomAppBar(title: 'About'),
       drawer: const SideNavbar(),
       body: FutureBuilder<List<AboutModel>>(
