@@ -10,7 +10,7 @@ Future<List<ServicesModel>> fetchService() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.7:8000/services/api');
+    final response = await dio.get('http://192.168.1.2:8000/services/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;

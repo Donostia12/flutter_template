@@ -3,7 +3,7 @@ import 'package:dio/dio.dart'; // Import Dio
 Future<List<ProductModel>> fetchProduct() async {
   try {
     // Melakukan GET request dengan Dio
-    final response = await Dio().get('http://192.168.1.7:8000/products/api');
+    final response = await Dio().get('http://192.168.1.2:8000/products/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -44,7 +44,7 @@ class ProductModel {
     return ProductModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.7:8000/' + (json['image'] ?? ''),
+      imageUrl: 'http://192.168.1.2:8000/' + (json['image'] ?? ''),
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['desc'] ?? 'No Description',
     );

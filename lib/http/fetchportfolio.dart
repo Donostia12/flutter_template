@@ -8,7 +8,7 @@ Future<List<PortfolioModel>> fetchPortfolio() async {
       'Connection': 'keep-alive',
     };
 
-    final response = await dio.get('http://192.168.1.7:8000/portfolio/api');
+    final response = await dio.get('http://192.168.1.2:8000/portfolio/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
