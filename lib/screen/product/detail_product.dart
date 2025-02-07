@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
+import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
 class DetailProduct extends StatelessWidget {
@@ -19,6 +20,7 @@ class DetailProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const FloatingWhatsApp(),
       appBar: const CustomAppBar(title: 'Detail News'),
       drawer: const SideNavbar(),
       body: SingleChildScrollView(
