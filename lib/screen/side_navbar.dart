@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:template_scaffold/color/steamcolor.dart';
 import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/about/about_us.dart';
@@ -48,7 +49,10 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyApp()),
+                PageTransition(
+                  type: PageTransitionType.fade,
+                  child: const MyApp(),
+                ),
               );
             },
             title: const Text('Home'),
@@ -61,8 +65,13 @@ class SideNavbar extends StatelessWidget {
                 leading: const Icon(Icons.person_3),
                 title: const Text('About Us'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const AboutUs()));
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: const AboutUs(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -71,8 +80,10 @@ class SideNavbar extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ServiceView()),
+                    PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: const ServiceView(),
+                    ),
                   );
                 },
               ),
@@ -80,8 +91,13 @@ class SideNavbar extends StatelessWidget {
                 leading: const Icon(Icons.adb_outlined),
                 title: const Text('product'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Product()));
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: const Product(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -93,7 +109,10 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const BlogNews()),
+                PageTransition(
+                  type: PageTransitionType.fade,
+                  child: const BlogNews(),
+                ),
               );
             },
             title: const Text('Blogs'),
@@ -105,7 +124,10 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Portfolio()),
+                PageTransition(
+                  type: PageTransitionType.fade,
+                  child: const Portfolio(),
+                ),
               );
             },
             title: const Text('Portfolio'),

@@ -13,29 +13,37 @@ class Product extends StatelessWidget {
       appBar: CustomAppBar(title: 'Product'),
       drawer: SideNavbar(),
       body: FutureBuilder<List<ProductModel>>(
-          future: fetchProduct(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else if (snapshot.hasData) {
-              final newsList = snapshot.data!;
-              return ListView.builder(
-                itemCount: newsList.length,
-                itemBuilder: (context, index) {
-                  final news = newsList[index];
-                  return ProductContent(
-                      title: news.title,
-                      shortContent: news.shortDesc,
-                      img_url: news.imageUrl,
-                      content: news.desc);
-                },
-              );
-            } else {
-              return const Center(child: Text('No data available'));
-            }
-          }),
+        future: fetchProduct(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (snapshot.hasData) {
+            final productList = snapshot.data!;
+            return AnimatedList(
+              initialItemCount: productList.length,
+              itemBuilder: (context, index, animation) {
+                final product = productList[index];
+                return SlideTransition(
+                  position: animation.drive(Tween<Offset>(
+                    begin: const Offset(1, 0),
+                    end: Offset.zero,
+                  ).chain(CurveTween(curve: Curves.easeInOut))),
+                  child: ProductContent(
+                    title: product.title,
+                    shortContent: product.shortDesc,
+                    img_url: product.imageUrl,
+                    content: product.desc,
+                  ),
+                );
+              },
+            );
+          } else {
+            return const Center(child: Text('No data available'));
+          }
+        },
+      ),
     );
   }
 }
