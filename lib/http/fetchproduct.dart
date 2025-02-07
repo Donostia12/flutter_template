@@ -1,28 +1,32 @@
 import 'package:dio/dio.dart'; // Import Dio
 
-Future<List<ProductModel>> fetchProduct() async {
+Future<List<ProductModel>> fetchProduct({int page = 1, int limit = 5}) async {
   try {
     // Melakukan GET request dengan Dio
-    final response = await Dio().get('http://192.168.1.2:8000/products/api');
+    final response = await Dio()
+        .get('http://192.168.1.2:8000/products/api', queryParameters: {
+      'page': page,
+      'limit': limit,
+    });
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
 
       if (jsonData['success'] == true && jsonData['data'] != null) {
-        List<ProductModel> newsList = [];
+        List<ProductModel> productList = [];
         for (var item in jsonData['data']) {
-          newsList.add(ProductModel.fromJson(item));
+          productList.add(ProductModel.fromJson(item));
         }
-        return newsList;
+        return productList;
       } else {
         throw Exception('Data tidak valid atau kosong');
       }
     } else {
       throw Exception(
-          'Failed to load news. Status code: ${response.statusCode}');
+          'Failed to load products. Status code: ${response.statusCode}');
     }
   } catch (e) {
-    throw Exception('Failed to load news: $e');
+    throw Exception('Failed to load products: $e');
   }
 }
 
