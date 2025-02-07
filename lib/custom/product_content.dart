@@ -53,23 +53,23 @@ class ProductContent extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       title,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       shortContent.length > 80
                           ? "${shortContent.substring(0, 80)}..."
                           : shortContent,
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -98,7 +98,7 @@ class ProductContent extends StatelessWidget {
                           side: const BorderSide(
                               color: Color.fromARGB(157, 4, 41, 84)),
                         ),
-                        child: Text('Read More'),
+                        child: const Text('Read More'),
                       ),
                     ),
                   ],
