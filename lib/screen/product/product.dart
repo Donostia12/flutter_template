@@ -72,7 +72,7 @@ class _ProductState extends State<Product> {
                 return ProductContent(
                   title: product.title,
                   shortContent: product.shortDesc,
-                  img_url: product.imageUrl,
+                  imgurl: product.imageUrl,
                   content: product.desc,
                 );
               },

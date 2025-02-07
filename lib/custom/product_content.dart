@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/detail_content.dart';
 
 class ProductContent extends StatelessWidget {
-  ProductContent({
+  const ProductContent({
     super.key,
     required this.title,
     required this.content,
     required this.shortContent,
-    required this.img_url,
+    required this.imgurl,
   });
 
   final String title;
   final String content;
   final String shortContent;
-  final String img_url;
+  final String imgurl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       height: 200,
       child: Card(
         child: Row(
@@ -28,7 +28,7 @@ class ProductContent extends StatelessWidget {
               height: 150,
               width: 150,
               child: Image.network(
-                img_url,
+                imgurl,
                 fit: BoxFit.cover,
                 headers: const {
                   'Connection': 'keep-alive', // Menjaga koneksi tetap hidup
@@ -81,7 +81,7 @@ class ProductContent extends StatelessWidget {
                               builder: (context) => DetailContent(
                                 titlenews: title,
                                 shortDescNews: shortContent,
-                                imageUrlNews: img_url,
+                                imageUrlNews: imgurl,
                                 contentNews: content,
                                 createdAtNews: '',
                               ),
