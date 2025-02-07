@@ -57,8 +57,8 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Product'),
-      drawer: SideNavbar(),
+      appBar: const CustomAppBar(title: 'Product'),
+      drawer: const SideNavbar(),
       body: _productList.isEmpty && _isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
