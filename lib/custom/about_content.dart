@@ -9,7 +9,6 @@ class AboutContent extends StatefulWidget {
   final String contentAbout;
 
   const AboutContent({
-    super.key,
     required this.titleAbout,
     required this.shortDescAbout,
     required this.imageUrlAbout,
@@ -73,9 +72,10 @@ class _AboutContentState extends State<AboutContent> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "About Us",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Html(

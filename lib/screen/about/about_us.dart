@@ -11,6 +11,13 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Define the action for the button here
+        },
+        child: Image.asset(
+            'assets/images/whatsapp.jpg'), // Ensure you have the image in your assets folder
+      ),
       appBar: const CustomAppBar(title: 'About'),
       drawer: const SideNavbar(),
       body: FutureBuilder<List<AboutModel>>(

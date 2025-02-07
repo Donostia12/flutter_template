@@ -61,6 +61,7 @@ flutter:
   assets:
     - assets/images/header_pages.jpg
     - assets/images/404_image.jpg
+    - assets/images/whatsapp.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
