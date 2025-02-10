@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
@@ -58,10 +59,26 @@ class DetailNews extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              contentNews,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.justify,
+            Html(
+              data: contentNews,
+              style: {
+                "p": Style(
+                  fontSize: FontSize(16),
+                  textAlign: TextAlign.justify,
+                ),
+                "h2": Style(
+                  fontSize: FontSize(24),
+                  fontWeight: FontWeight.bold,
+                ),
+                "h3": Style(
+                  fontSize: FontSize(20),
+                  fontWeight: FontWeight.bold,
+                ),
+                "h4": Style(
+                  fontSize: FontSize(18),
+                  fontWeight: FontWeight.bold,
+                ),
+              },
             ),
           ],
         ),

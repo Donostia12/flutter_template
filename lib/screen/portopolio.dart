@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
-
 import 'package:template_scaffold/http/fetchportfolio.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
 
@@ -12,45 +11,59 @@ class Portfolio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const FloatingWhatsApp(),
-      appBar: const CustomAppBar(title: 'Portopolio'),
+      appBar: const CustomAppBar(title: 'Portfolio'),
       drawer: const SideNavbar(),
       body: FutureBuilder<List<PortfolioModel>>(
-          future: fetchPortfolio(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else if (snapshot.hasData) {
-              final newsList = snapshot.data!;
+        future: fetchPortfolio(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (snapshot.hasData) {
+            final newsList = snapshot.data!;
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 1), // Padding tipis di kiri dan kanan
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    // Menghitung lebar gambar berdasarkan lebar layar
-                    final double itemWidth = constraints.maxWidth / 3 -
-                        4; // Mengurangi 8 untuk padding kiri dan kanan
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 1), // Padding tipis di kiri dan kanan
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  // Menghitung lebar gambar berdasarkan lebar layar
+                  final double itemWidth = constraints.maxWidth / 3 -
+                      4; // Mengurangi 8 untuk padding kiri dan kanan
 
-                    return ListView.builder(
-                      itemCount: (newsList.length / 3).ceil(),
-                      itemBuilder: (context, rowIndex) {
-                        // Mengambil sublist untuk row
-                        int startIndex = rowIndex * 3;
-                        int endIndex = (startIndex + 3) < newsList.length
-                            ? startIndex + 3
-                            : newsList.length;
+                  return ListView.builder(
+                    itemCount: (newsList.length / 3).ceil(),
+                    itemBuilder: (context, rowIndex) {
+                      // Mengambil sublist untuk row
+                      int startIndex = rowIndex * 3;
+                      int endIndex = (startIndex + 3) < newsList.length
+                          ? startIndex + 3
+                          : newsList.length;
 
-                        List<PortfolioModel> rowImages =
-                            newsList.sublist(startIndex, endIndex);
+                      List<PortfolioModel> rowImages =
+                          newsList.sublist(startIndex, endIndex);
 
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: rowImages.map((portfolio) {
-                            return Padding(
-                              padding: const EdgeInsets.all(
-                                  2), // Padding kecil antar gambar
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: rowImages.map((portfolio) {
+                          return Padding(
+                            padding: const EdgeInsets.all(
+                                2), // Padding kecil antar gambar
+                            child: InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => Dialog(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Image.network(portfolio.imageUrl),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(
                                     0), // Sedikit radius untuk sudut gambar
@@ -64,18 +77,20 @@ class Portfolio extends StatelessWidget {
                                       .cover, // Menyesuaikan ukuran gambar agar tetap proporsional
                                 ),
                               ),
-                            );
-                          }).toList(),
-                        );
-                      },
-                    );
-                  },
-                ),
-              );
-            } else {
-              return const Center(child: Text('No data available'));
-            }
-          }),
+                            ),
+                          );
+                        }).toList(),
+                      );
+                    },
+                  );
+                },
+              ),
+            );
+          } else {
+            return const Center(child: Text('No data available'));
+          }
+        },
+      ),
     );
   }
 }
