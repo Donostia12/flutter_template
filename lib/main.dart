@@ -109,20 +109,17 @@ class SliderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Gambar latar belakang
         Image.network(
           imageUrl,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.cover,
         ),
-        // Overlay gelap agar teks lebih terbaca
         Container(
           width: double.infinity,
           height: double.infinity,
           color: Colors.black.withOpacity(0.5),
         ),
-        // Teks di tengah
         Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
