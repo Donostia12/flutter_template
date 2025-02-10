@@ -3,8 +3,8 @@ import 'package:dio/dio.dart'; // Import Dio
 Future<List<ProductModel>> fetchProduct({int page = 1, int limit = 5}) async {
   try {
     // Melakukan GET request dengan Dio
-    final response = await Dio()
-        .get('http://192.168.1.2:8000/products/api', queryParameters: {
+    final response =
+        await Dio().get('https://baligatra.com/products/api', queryParameters: {
       'page': page,
       'limit': limit,
     });
@@ -48,7 +48,7 @@ class ProductModel {
     return ProductModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
+      imageUrl: 'https://baligatra.com/${json['image'] ?? ''}',
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['desc'] ?? 'No Description',
     );

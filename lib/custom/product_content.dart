@@ -8,12 +8,14 @@ class ProductContent extends StatelessWidget {
     required this.content,
     required this.shortContent,
     required this.imgurl,
+    required this.createdAt,
   });
 
   final String title;
   final String content;
   final String shortContent;
   final String imgurl;
+  final String createdAt;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +85,7 @@ class ProductContent extends StatelessWidget {
                                 shortDescNews: shortContent,
                                 imageUrlNews: imgurl,
                                 contentNews: content,
-                                createdAtNews: '',
+                                createdAtNews: createdAt,
                               ),
                             ),
                           );

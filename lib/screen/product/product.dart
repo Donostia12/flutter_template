@@ -69,11 +69,13 @@ class _ProductState extends State<Product> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 final product = _productList[index];
+
                 return ProductContent(
                   title: product.title,
                   shortContent: product.shortDesc,
                   imgurl: product.imageUrl,
                   content: product.desc,
+                  createdAt: product.createdAt,
                 );
               },
             ),
