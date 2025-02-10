@@ -10,7 +10,7 @@ Future<List<ServicesModel>> fetchService() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.2:8000/services/api');
+    final response = await dio.get('https://baligatra.com/services/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -51,7 +51,7 @@ class ServicesModel {
     return ServicesModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
+      imageUrl: 'https://baligatra.com/${json['image'] ?? ''}',
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['desc'] ?? 'No Description',
     );
