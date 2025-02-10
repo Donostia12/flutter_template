@@ -8,7 +8,7 @@ Future<List<AboutModel>> fetchAbout() async {
       'Connection': 'keep-alive',
     };
 
-    final response = await dio.get('http://192.168.1.2:8000/about/api');
+    final response = await dio.get('https://baligatra.com/about/api');
 
     if (response.statusCode == 200) {
       final jsonData = response.data as Map<String, dynamic>;
@@ -50,7 +50,7 @@ class AboutModel {
     return AboutModel(
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
-      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
+      imageUrl: 'https://baligatra.com/${json['image'] ?? ''}',
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['content_desc'] ?? 'No Description',
     );
