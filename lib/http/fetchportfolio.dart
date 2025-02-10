@@ -8,7 +8,7 @@ Future<List<PortfolioModel>> fetchPortfolio() async {
       'Connection': 'keep-alive',
     };
 
-    final response = await dio.get('http://192.168.1.2:8000/portfolio/api');
+    final response = await dio.get('https://baligatra.com/portfolio/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -40,7 +40,7 @@ class PortfolioModel {
 
   factory PortfolioModel.fromJson(Map<String, dynamic> json) {
     return PortfolioModel(
-      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
+      imageUrl: 'https://baligatra.com/${json['image'] ?? ''}',
     );
   }
 }
