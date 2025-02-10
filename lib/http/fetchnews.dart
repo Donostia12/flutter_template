@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart'; // Import Dio
 
-Future<List<NewsModel>> fetchNews() async {
+Future<List<NewsModel>> fetchNews(int page, {int limit = 5}) async {
   try {
     Dio dio = Dio();
 
@@ -10,7 +10,11 @@ Future<List<NewsModel>> fetchNews() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('https://baligatra.com/blogs/api');
+    final response =
+        await dio.get('https://baligatra.com/blogs/api', queryParameters: {
+      'page': page,
+      'limit': limit,
+    });
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
