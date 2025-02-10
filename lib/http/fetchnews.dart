@@ -10,7 +10,7 @@ Future<List<NewsModel>> fetchNews() async {
     };
 
     // Melakukan GET request dengan Dio
-    final response = await dio.get('http://192.168.1.2:8000/blogs/api');
+    final response = await dio.get('https://baligatra.com/blogs/api');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = response.data;
@@ -52,7 +52,7 @@ class NewsModel {
       title: json['title'] ?? 'No Title',
       shortDesc: json['short_desc'] ?? 'No Description',
       // ignore: prefer_interpolation_to_compose_strings
-      imageUrl: 'http://192.168.1.2:8000/${json['image'] ?? ''}',
+      imageUrl: 'https://baligatra.com/${json['image'] ?? ''}',
       createdAt: json['created_at'] ?? 'No Date',
       desc: json['desc'] ?? 'No Description',
     );
