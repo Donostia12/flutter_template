@@ -69,7 +69,12 @@ class _BlogNewsState extends State<BlogNews> {
           itemCount: _newsList.length + (_hasMore ? 1 : 0),
           itemBuilder: (context, index) {
             if (index == _newsList.length) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: CircularProgressIndicator(),
+                ),
+              );
             }
 
             final news = _newsList[index];

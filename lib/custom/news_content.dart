@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:template_scaffold/screen/blog/detail_news.dart';
 
 class NewsContent extends StatelessWidget {
@@ -29,12 +28,6 @@ class NewsContent extends StatelessWidget {
             // Gambar Berita
             Container(
               height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
-                ),
-              ),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -49,14 +42,28 @@ class NewsContent extends StatelessWidget {
                             )),
                   );
                 },
-                child: Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(imageUrl),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  headers: const {
+                    'Connection': 'keep-alive', // Menjaga koneksi tetap hidup
+                  },
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error, size: 50, color: Colors.red);
+                  },
                 ),
               ),
             ),
