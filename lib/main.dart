@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      endDrawer: Sidebar(), // Gunakan Sidebar dari file sidebar.dart
+      endDrawer: Sidebar(),
       body: Stack(
         children: [
           if (sliderData.isNotEmpty)
