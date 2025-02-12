@@ -16,7 +16,7 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       floatingActionButton: const FloatingWhatsApp(),
       appBar: HeaderPage(),
-      drawer: Sidebar(),
+      endDrawer: Sidebar(),
       body: FutureBuilder<List<AboutModel>>(
         future: fetchAbout(),
         builder: (context, snapshot) {
