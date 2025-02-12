@@ -2,6 +2,10 @@
     {
       "type": "mobile_app_development",
       "image": "assets/images/mobile_app_development.webp",
+      "tittle": {
+        "english": "Mobile App Development",
+        "bahasa": "Pengembangan Aplikasi Seluler"
+      },
       "text": {
         "english": "Transform your Business app with Mobile Apps. We help you grow your business through mobile apps with web, native and hybrid solutions, contact us for more info.",
         "bahasa": "Transformasi aplikasi Bisnis Anda dengan Aplikasi Seluler. Kami membantu Anda mengembangkan bisnis Anda melalui aplikasi seluler dengan solusi web, native, dan hybrid, hubungi kami untuk info lebih lanjut."
@@ -10,6 +14,10 @@
     {
       "type": "web_development",
       "image": "assets/images/web_development.webp",
+      "tittle": {
+        "english": "Web Development",
+        "bahasa": "Pengembangan Web"
+      },
       "text": {
         "english": "What we do is create dynamic web applications that run on web servers and can be used by many different people.",
         "bahasa": "Yang kami lakukan adalah membuat aplikasi web dinamis yang berjalan di server web dan dapat digunakan oleh banyak orang yang berbeda."
@@ -17,7 +25,11 @@
     },
     {
       "type": "digital_marketing",
-      "image": "assets/images/home/digital_marketing.webp",
+      "image": "assets/images/digital_marketing.webp",
+      "tittle": {
+        "english": "Digital Marketing",
+        "bahasa": "Pemasaran Digital"
+      },
       "text": {
         "english": "With your existing business environment, we help to make businesses ready to compete in the digital age today.",
         "bahasa": "Dengan lingkungan bisnis Anda yang ada, kami membantu mempersiapkan bisnis untuk bersaing di era digital saat ini."
