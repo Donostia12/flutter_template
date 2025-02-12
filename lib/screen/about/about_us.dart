@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/about_content.dart';
-import 'package:template_scaffold/custom/custom_appbar.dart';
+
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/header_page.dart';
 
