@@ -6,6 +6,7 @@ import 'package:template_scaffold/header_page.dart';
 
 import 'package:template_scaffold/http/fetchabout.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
+import 'package:template_scaffold/sidebar.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       floatingActionButton: const FloatingWhatsApp(),
       appBar: HeaderPage(),
-      drawer: const SideNavbar(),
+      drawer: Sidebar(),
       body: FutureBuilder<List<AboutModel>>(
         future: fetchAbout(),
         builder: (context, snapshot) {
