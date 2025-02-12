@@ -48,7 +48,7 @@ class SideNavbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyApp()),
+                MaterialPageRoute(builder: (context) => MyApp()),
               );
             },
             title: const Text('Home'),

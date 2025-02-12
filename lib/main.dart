@@ -1,140 +1,114 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/custom/custom_appbar.dart';
-import 'package:template_scaffold/screen/side_navbar.dart';
+import 'package:flutter/services.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        appBar: CustomAppBar(title: 'Main'),
-        drawer: SideNavbar(),
-        body: MySlider(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
 
-class MySlider extends StatefulWidget {
-  const MySlider({Key? key}) : super(key: key);
-
+class HomePage extends StatefulWidget {
   @override
-  _MySliderState createState() => _MySliderState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MySliderState extends State<MySlider> {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
-
-  final List<Map<String, String>> sliderData = [
-    {
-      'imageUrl':
-          'https://baligatra.com/assets/general/images/home/mobile_app_development.webp',
-      'text':
-          'Transform your Business app with Mobile Apps. We help you grow your business through mobile apps with web, native and hybrid solutions, contact us for more info.',
-    },
-    {
-      'imageUrl':
-          'https://baligatra.com/assets/general/images/home/web_development.webp',
-      'text':
-          'What we do is create dynamic web applications that run on web servers and can be used by many different people.',
-    },
-    {
-      'imageUrl':
-          'https://baligatra.com/assets/general/images/home/digital_marketing.webp',
-      'text':
-          'With your existing business environment, we help to make businesses ready to compete in the digital age today.',
-    },
-  ];
+class _HomePageState extends State<HomePage> {
+  List<dynamic> sliderData = [];
 
   @override
   void initState() {
     super.initState();
-    _startAutoScroll();
+    loadSliderData();
   }
 
-  void _startAutoScroll() {
-    Future.delayed(const Duration(seconds: 5), () {
-      if (_pageController.hasClients) {
-        if (_currentPage < sliderData.length - 1) {
-          _currentPage++;
-        } else {
-          _currentPage = 0;
-        }
-        _pageController.animateToPage(
-          _currentPage,
-          duration: const Duration(milliseconds: 800),
-          curve: Curves.easeInOut,
-        );
-        _startAutoScroll();
-      }
+  Future<void> loadSliderData() async {
+    final String response =
+        await rootBundle.loadString('assets/json/home.json');
+    final data = json.decode(response);
+    setState(() {
+      sliderData = data;
     });
   }
 
   @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      itemCount: sliderData.length,
-      itemBuilder: (context, index) {
-        return SliderItem(
-          imageUrl: sliderData[index]['imageUrl']!,
-          text: sliderData[index]['text']!,
-        );
-      },
-    );
-  }
-}
-
-class SliderItem extends StatelessWidget {
-  final String imageUrl;
-  final String text;
-
-  const SliderItem({Key? key, required this.imageUrl, required this.text})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.network(
-          imageUrl,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.cover,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Image.asset(
+          'assets/images/logo_baligatra.png',
+          height: 50, // Sesuaikan ukuran logo
         ),
-        Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.black.withOpacity(0.5),
-        ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+        centerTitle: false,
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.menu, color: Colors.black),
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text("Menu",
+                  style: TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {},
+            ),
+          ],
         ),
-      ],
+      ),
+      body: Column(
+        children: [
+          if (sliderData.isNotEmpty)
+            CarouselSlider(
+              options: CarouselOptions(
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                enlargeCenterPage: true,
+              ),
+              items: sliderData.map((item) {
+                return Column(
+                  children: [
+                    Image.asset(
+                      item['image'],
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        item['text']['english'],
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+        ],
+      ),
     );
   }
 }
