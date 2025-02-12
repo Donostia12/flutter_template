@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'sidebar.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<dynamic> sliderData = [];
-  int _currentIndex = 0; // Menyimpan indeks slide aktif
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -46,87 +47,107 @@ class _HomePageState extends State<HomePage> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      extendBodyBehindAppBar: true, // Agar AppBar transparan di atas slider
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Image.asset(
           'assets/images/logo_baligatra.png',
-          height: 50, // Ukuran logo diperbesar
+          height: 50,
         ),
         centerTitle: false,
         actions: [
           Builder(
             builder: (context) => IconButton(
               icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () =>
-                  Scaffold.of(context).openEndDrawer(), // Buka drawer kanan
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
             ),
           ),
         ],
       ),
-      endDrawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text("Menu",
-                  style: TextStyle(color: Colors.white, fontSize: 24)),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+      endDrawer: Sidebar(), // Gunakan Sidebar dari file sidebar.dart
       body: Stack(
         children: [
           if (sliderData.isNotEmpty)
             CarouselSlider(
               options: CarouselOptions(
-                height: screenHeight, // Slider memenuhi layar
+                height: screenHeight,
                 autoPlay: true,
-                viewportFraction: 1.0, // Gambar full tanpa efek samping
+                viewportFraction: 1.0,
                 enlargeCenterPage: false,
                 onPageChanged: (index, reason) {
                   setState(() {
-                    _currentIndex = index; // Perbarui indeks aktif
+                    _currentIndex = index;
                   });
                 },
               ),
               items: sliderData.map((item) {
-                return Container(
-                  width: double.infinity,
-                  child: Image.asset(
-                    item['image'],
-                    fit: BoxFit.cover, // Pastikan gambar memenuhi layar
-                  ),
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ColorFiltered(
+                      colorFilter: ColorFilter.matrix([
+                        0.65,
+                        0.35,
+                        0.35,
+                        0,
+                        0,
+                        0.35,
+                        0.65,
+                        0.35,
+                        0,
+                        0,
+                        0.35,
+                        0.35,
+                        0.65,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                      ]),
+                      child: Image.asset(
+                        item['image'],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                    Container(color: Colors.black.withOpacity(0.3)),
+                  ],
                 );
               }).toList(),
             ),
           Positioned.fill(
             child: Align(
-              alignment: Alignment.center, // Posisikan teks di tengah layar
-              child: Container(
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.black
-                      .withOpacity(0.5), // Background semi-transparan
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  sliderData.isNotEmpty
-                      ? sliderData[_currentIndex]['text']['english']
-                      : '',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white, // Warna teks putih agar kontras
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    sliderData.isNotEmpty
+                        ? sliderData[_currentIndex]['tittle']['english']
+                        : '',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      sliderData.isNotEmpty
+                          ? sliderData[_currentIndex]['text']['english']
+                          : '',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
