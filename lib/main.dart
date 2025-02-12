@@ -11,11 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        appBar: const CustomAppBar(title: 'Main'),
-        drawer: const SideNavbar(),
-        body: const MySlider(),
+        appBar: CustomAppBar(title: 'Main'),
+        drawer: SideNavbar(),
+        body: MySlider(),
       ),
     );
   }
