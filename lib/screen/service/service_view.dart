@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/custom/header_content.dart';
 
 import 'package:template_scaffold/custom/service_content.dart';
+import 'package:template_scaffold/header_page.dart';
 import 'package:template_scaffold/http/fetchservice.dart';
-import 'package:template_scaffold/screen/side_navbar.dart';
+
+import 'package:template_scaffold/sidebar.dart';
 
 class ServiceView extends StatelessWidget {
   const ServiceView({super.key});
@@ -15,10 +16,8 @@ class ServiceView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const FloatingWhatsApp(),
-      appBar: const CustomAppBar(
-        title: 'Service',
-      ),
-      drawer: const SideNavbar(),
+      appBar: HeaderPage(),
+      endDrawer: Sidebar(),
       body: Column(
         children: [
           const HeaderContent(
