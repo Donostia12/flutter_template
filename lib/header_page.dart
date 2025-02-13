@@ -25,7 +25,7 @@ class HeaderPage extends StatelessWidget implements PreferredSizeWidget {
         'assets/images/logo_baligatra.png',
         height: 50,
       ),
-      centerTitle: false,
+      centerTitle: true,
       actions: [
         Builder(
           builder: (context) => IconButton(

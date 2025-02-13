@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/about/about_us.dart'; // Pastikan impor ini benar
+import 'package:template_scaffold/screen/blog/blog_news.dart';
+import 'package:template_scaffold/screen/portopolio.dart';
+import 'package:template_scaffold/screen/product/product.dart';
 import 'package:template_scaffold/screen/service/service_view.dart';
 
 class Sidebar extends StatelessWidget {
@@ -53,13 +56,22 @@ class Sidebar extends StatelessWidget {
             );
             break;
           case "Products & Solutions":
-            // Navigasi untuk "Products & Solutions"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Product()),
+            );
             break;
           case "Blog":
-            // Navigasi untuk "Blog"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BlogNews()),
+            );
             break;
           case "Portfolio":
-            // Navigasi untuk "Portfolio"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Portfolio()),
+            );
             break;
           default:
             break;
