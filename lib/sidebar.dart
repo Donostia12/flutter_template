@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/about/about_us.dart'; // Pastikan impor ini benar
+import 'package:template_scaffold/screen/service/service_view.dart';
 
 class Sidebar extends StatelessWidget {
   @override
@@ -46,7 +47,10 @@ class Sidebar extends StatelessWidget {
             );
             break;
           case "Services":
-            // Navigasi untuk "Services"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ServiceView()),
+            );
             break;
           case "Products & Solutions":
             // Navigasi untuk "Products & Solutions"

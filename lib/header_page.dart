@@ -19,7 +19,7 @@ class HeaderPage extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color.fromARGB(0, 195, 188, 188),
       elevation: 0,
       title: Image.asset(
         'assets/images/logo_baligatra.png',
@@ -29,7 +29,8 @@ class HeaderPage extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.menu, color: Colors.black),
+            icon: Icon(Icons.menu,
+                color: const Color.fromARGB(255, 255, 255, 255)),
             onPressed: () => Scaffold.of(context).openEndDrawer(),
           ),
         ),
