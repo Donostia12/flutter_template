@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
+import 'package:template_scaffold/header_page.dart';
 import 'package:template_scaffold/http/fetchportfolio.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
+import 'package:template_scaffold/sidebar.dart';
 
 class Portfolio extends StatelessWidget {
   const Portfolio({super.key});
@@ -11,8 +13,8 @@ class Portfolio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const FloatingWhatsApp(),
-      appBar: const CustomAppBar(title: 'Portfolio'),
-      drawer: const SideNavbar(),
+      appBar: HeaderPage(),
+      endDrawer: Sidebar(),
       body: FutureBuilder<List<PortfolioModel>>(
         future: fetchPortfolio(),
         builder: (context, snapshot) {
