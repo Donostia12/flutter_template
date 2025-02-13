@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:template_scaffold/main.dart';
 import 'package:template_scaffold/screen/about/about_us.dart'; // Pastikan impor ini benar
 
 class Sidebar extends StatelessWidget {
@@ -39,7 +40,10 @@ class Sidebar extends StatelessWidget {
             );
             break;
           case "Home":
-            // Navigasi untuk "Home"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
             break;
           case "Services":
             // Navigasi untuk "Services"
