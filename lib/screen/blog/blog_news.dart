@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:template_scaffold/custom/custom_appbar.dart';
+
 import 'package:template_scaffold/custom/floating_whatsapp.dart';
 import 'package:template_scaffold/custom/news_content.dart';
 import 'package:template_scaffold/header_page.dart';
 import 'package:template_scaffold/http/fetchnews.dart';
-import 'package:template_scaffold/screen/side_navbar.dart';
+
 import 'package:template_scaffold/sidebar.dart';
 
 class BlogNews extends StatefulWidget {
