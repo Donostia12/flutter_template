@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:template_scaffold/custom/custom_appbar.dart';
 import 'package:template_scaffold/custom/product_content.dart';
+import 'package:template_scaffold/header_page.dart';
 import 'package:template_scaffold/http/fetchproduct.dart';
 import 'package:template_scaffold/screen/side_navbar.dart';
+import 'package:template_scaffold/sidebar.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -57,8 +59,8 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Product'),
-      drawer: const SideNavbar(),
+      appBar: HeaderPage(),
+      endDrawer: Sidebar(),
       body: _productList.isEmpty && _isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
